@@ -43,7 +43,7 @@
                 <div class="card-header border-0">
                     <div class="card-title text-center">
                         <a href="<?php echo base_url();?>"><img style="height: 46px;" src="<?php echo base_url();?>assets/dummylogo.jpg" alt="logo"></a>
-                        <!--  <center><div style="width: 350px;color:text-align: center;"><?php echo $this->session->flashdata('msg'); ?></div></center> -->
+                        <center><div style="width: 350px;color:text-align: center;"><?php echo $this->session->flashdata('msg'); ?></div></center> 
                     </div>
                     <h5 class="card-subtitle line-on-side text-muted text-center pt-2"><span><b> Login</b></span></h5>
                 </div>
