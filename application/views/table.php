@@ -201,7 +201,7 @@ input[type=submit] {
 				<div class="card-content collapse show">
 					<div class="card-body card-dashboard" id="table_data">
 					
-					<table class="table table-striped table-bordered auto-fill">
+					<table class="table table-striped table-bordered auto-fill" id="table_datatable">
 							<thead>
 								<tr>
 									<th>#</th>
@@ -359,13 +359,12 @@ autocomplete(document.getElementById("myInput"), searchData);
   
 
 var api = "<?php echo base_url('api-search-data');?>";
-// button trigger
+
 $('#search_data').on('click',function() {  
 
    var button = $(this);     
     var inputData = $('#myInput').val();
-    if($('#myInput').val() != '') {
-
+    
       $.ajax({
       url: api,
       method:'post',
@@ -374,70 +373,42 @@ $('#search_data').on('click',function() {
       type:"text/json"
    })
    .always(function(){
-      // $(button).html('Loading Data...');
-      // $('#table_data').html('<div class="loader-wrapper"><div class="loader-container"><div class="square-spin loader-success"><div></div></div></div></div>');
       
    })
    .done(function(evt) {
-      // Disable button
-      // $(button).prop('disabled',true);
-      // $(button).html('Search');
+     
        var result = parseJwt(evt.Token);
        console.log(result);
-      // Set timeout for lazy loading
+     
       setTimeout(function(){
-         // var result = JSON.parse(evt);
-         var html = '<table class="table table-striped table-bordered auto-fill"><thead><tr><th>#</th><th>Symbol</th><th>Company Name</th><th>Market capitalization (Rs in Lakhs)</th></tr></thead><tbody>';
+
+         var html = '';
         
          for(var i=0;i < result.length; i++) {
 
           html += '<tr><td>'+i+'</td><td>'+result[i].symbol+'</td><td>'+result[i].c_name+'</td><td>'+result[i].market_cap+'</td></tr>';
               
-              
-
-            // html +='<h3 class="tables-doctor-name">'+result.Data[i].DoctorName+'</h3>'
-//                +'<p class="tables-doctor-title">'+result.Data[i].Specialist+'</p>';
-// if(result.Data[i].Hospitals.length > 0) {  
-//                html +='<table class="table">'
-//                   +'<thead>'
-//                   +'<tr>'
-//                   +'<th scope="col">Nama Rumah Sakit</th>'
-//                   +'<th scope="col">Alamat</th>'
-//                   +'<th scope="col">Jadwal Praktek</th>'
-//                   +'</tr>'
-//                   +'</thead>'
-//                   +'<tbody>';
-// for(var j=0;j < result.Data[i].Hospitals.length; j++) {
-//                   html +='<tr>'
-//                      +'<th scope="row">'+result.Data[i].Hospitals[j].Name+'</th>'
-//                      +'<td>'+result.Data[i].Hospitals[j].Address+'</td>'
-//                      +'<td>'+result.Data[i].Hospitals[j].Schedule+'</td>'
-//                      +'</tr>';
-//                }
-//                html +='</tbody></table>';
-//             }
          }
-         html +='</tbody></table>';
-         $('#table_data').html('');
-         $('#table_data').html(html);
+        
+         var table = $('#table_datatable').DataTable();
+ 
+        var rows = table
+            .rows()
+            .remove()
+            .draw();
+         
+         $('#table_datatable').prepend(html);
+         $('#myInput').val('');
      },1000); 
-
-
 
    })
    .fail(function() {
       alert('Error : Failed to reach API Url or check your connection');
-      // $(button).prop('disabled',false);
+      
    });
 
-    }
-    // console.log(inputData);
+  
    
-   // .then(function(evt){
-   //    setTimeout(function(){        
-   //       $(button).css({'background-color':'#ccc'}).hide();          
-   //    },1000);
-   // });
 });
 
 function parseJwt (token) {
