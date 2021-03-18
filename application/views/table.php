@@ -411,7 +411,7 @@ $("#search_data").append('<i class="fa fa-spinner spinner"></i>');
         
          for(var i=0;i < result.length; i++) {
 
-          html += '<tr><td>'+i+'</td><td>'+result[i].c_name+'</td><td>'+result[i].market_cap+'</td><td>'+result[i].market_cap+'</td><td>'+result[i].pe+'</td><td>'+result[i].eps+'</td><td>'+result[i].market_price+'</td></tr>';
+          html += '<tr><td>'+i+'</td><td>'+result[i].c_name+'</td><td>'+result[i].market_cap+'</td><td>'+result[i].market_price+'</td><td>'+result[i].pe+'</td><td>'+result[i].eps+'</td></tr>';
               
          }
         
