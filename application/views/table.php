@@ -214,29 +214,33 @@ input[type=submit] {
 							<thead>
 								<tr>
 									<th>#</th>
-									<th>Symbol</th>
 									<th>Company Name</th>
-									<th>Market capitalization (Rs in Lakhs)</th>
-									
+									<th>Market capitalization</th>
+                  <th>Current Market Price of stock</th>
+                  <th>Stock P/E</th>
+                  <th>EPS</th>
 								</tr>
 							</thead>
 							<tbody>
 							<?php $i=0; foreach($nse as $data) { ?>
 								<tr>
 									<td><?php echo $i=$i+1;?></td>
-									<td><?php echo $data->symbol;?></td>
 									<td><?php echo $data->c_name;?></td>
 									<td><?php echo $data->market_cap;?></td>
-									
+									<td><?php echo $data->market_price;?></td>
+									<td><?php echo $data->pe;?></td>
+                  <td><?php echo $data->eps;?></td>
 								</tr>
               <?php } ?>
 							</tbody>
 							<tfoot>
 								<tr>
 									<th>#</th>
-									<th>Symbol</th>
-									<th>Company Name</th>
-									<th>Market capitalization (Rs in Lakhs)</th>
+                  <th>Company Name</th>
+                  <th>Market capitalization</th>
+                  <th>Current Market Price of stock</th>
+                  <th>Stock P/E</th>
+                  <th>EPS</th>
 									
 								</tr>
 							</tfoot>
@@ -407,7 +411,7 @@ $("#search_data").append('<i class="fa fa-spinner spinner"></i>');
         
          for(var i=0;i < result.length; i++) {
 
-          html += '<tr><td>'+i+'</td><td>'+result[i].symbol+'</td><td>'+result[i].c_name+'</td><td>'+result[i].market_cap+'</td></tr>';
+          html += '<tr><td>'+i+'</td><td>'+result[i].c_name+'</td><td>'+result[i].market_cap+'</td><td>'+result[i].market_cap+'</td><td>'+result[i].pe+'</td><td>'+result[i].eps+'</td><td>'+result[i].market_price+'</td></tr>';
               
          }
         
