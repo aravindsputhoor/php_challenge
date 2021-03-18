@@ -23,8 +23,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/backend/css/core/menu/menu-types/horizontal-menu.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/backend/css/core/colors/palette-gradient.css">
     <!-- END Page Level CSS-->
-    <!-- BEGIN Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
+ 
     <!-- END Custom CSS-->
     <script src="<?php echo base_url();?>assets/js/jquery.js"></script>
     <script src="<?php echo base_url();?>assets/js/jquery.validate.js"></script>  
@@ -357,11 +356,25 @@ function autocomplete(inp, arr) {
   });
 }
 
-<?php $datas = $this->AdminModel->get_cmny_names(); ?>
-var searchData = [<?php foreach($datas as $data) { echo '"'.$data->c_name.'", ';} ?>];
+
 
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-autocomplete(document.getElementById("myInput"), searchData);
+var api_cpny = "<?php echo base_url('api-search-cmny');?>";
+ 
+  var tmp = null;
+  $.ajax({
+      url: api_cpny,
+      method:'get',
+      cache:false,
+      type:"text/json"
+   }).done(function(evt) { 
+        var result = parseJwt(evt.Token);
+         tmp = result;
+         autocomplete(document.getElementById("myInput"), tmp);
+         //console.log(tmp);
+       
+   });
+
 </script>
 
 

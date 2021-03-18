@@ -9,6 +9,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['home'] = "AuthController";
 $route['dashboard'] = "DashController";
 $route['api-search-data'] = "ApiController/search_data";
+$route['api-search-cmny'] = "ApiController/search_cmpny";
 $route['logout'] = "AuthController/logout";
 
 

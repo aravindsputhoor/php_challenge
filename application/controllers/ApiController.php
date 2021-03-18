@@ -28,6 +28,17 @@ class ApiController extends CI_Controller {
 
     }
 
+    public function search_cmpny() 
+    {
+       $datas = $this->AdminModel->get_cmny_names();
+       $result = array();
+       foreach($datas as $data) {
+        $result[] = $data->c_name;
+       }
+       $jwtToken = $this->objOfJwt->GenerateToken($result);
+        echo json_encode(array('Token'=>$jwtToken));
+    }
+
 	
 	
 }
