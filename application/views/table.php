@@ -2,7 +2,9 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
   <head>
-   
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <title><?php echo SITE_TITLE;?></title>
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i%7CMuli:300,400,500,700" rel="stylesheet">
@@ -101,7 +103,7 @@ input[type=submit] {
           <ul class="nav navbar-nav flex-row">
             <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
             <li class="nav-item"><a class="navbar-brand" href="../../../html/ltr/horizontal-menu-template/index.html">
-                <h3 class="brand-text"><?php echo SITE_TITLE;?></h3></a></li>
+                <h4 class="brand-text"><?php echo SITE_TITLE;?></h4></a></li>
             <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a></li>
           </ul>
         </div>
