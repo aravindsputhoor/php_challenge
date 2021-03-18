@@ -64,6 +64,9 @@ input[type=submit] {
 }
 
 .autocomplete-items {
+  max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
   position: absolute;
   border: 1px solid #d4d4d4;
   border-bottom: none;
@@ -159,21 +162,26 @@ input[type=submit] {
             </div>
             <h3 class="content-header-title mb-0">Serach <?php echo SITE_TITLE;?> Datas</h3>
           </div>
-          <div class="content-header-right col-md-6 col-12">
+          <div class="content-header col-md-6 col-12">
            <!--  <div class="btn-group float-md-right" role="group" aria-label="Button group with nested dropdown">   
               <button class="btn btn-info round dropdown-toggle dropdown-menu-right px-2" id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ft-settings icon-left"></i> Settings</button>
               <div class="dropdown-menu" aria-labelledby="btnGroupDrop1"><a class="dropdown-item" href="card-bootstrap.html">Cards</a><a class="dropdown-item" href="component-buttons-extended.html">Buttons</a></div>
             </div> -->
+            <center>
+              <div class="autocomplete" style="width:300px;">
+    <input id="myInput" type="text"  placeholder="Search Company Name here..">
+  </div>
+ <button class="btn btn-primary" id="search_data" >
+
+      Search
+   </button>
+            </center>
+            
           </div>
         </div>
       
            
-  <div class="autocomplete" style="width:300px;">
-    <input id="myInput" type="text"  placeholder="Search Company Name here..">
-  </div>
- <button class="btn btn-primary" id="search_data" >
-      Search
-   </button>
+  
 <br><br>
 
      
@@ -363,7 +371,7 @@ autocomplete(document.getElementById("myInput"), searchData);
 var api = "<?php echo base_url('api-search-data');?>";
 
 $('#search_data').on('click',function() {  
-
+$("#search_data").append('<i class="fa fa-spinner spinner"></i>');
    var button = $(this);     
     var inputData = $('#myInput').val();
     
@@ -382,8 +390,6 @@ $('#search_data').on('click',function() {
        var result = parseJwt(evt.Token);
        console.log(result);
      
-      setTimeout(function(){
-
          var html = '';
         
          for(var i=0;i < result.length; i++) {
@@ -401,8 +407,11 @@ $('#search_data').on('click',function() {
          
          $('#table_datatable').prepend(html);
          $('#myInput').val('');
-     },1000); 
 
+    
+       $('#search_data').html('');
+       $('#search_data').html('Search');
+       
    })
    .fail(function() {
       alert('Error : Failed to reach API Url or check your connection');
@@ -424,8 +433,7 @@ function parseJwt (token) {
 };
 
 </script>
-
-
+  
     <footer class="footer footer-static footer-light navbar-shadow">
       <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2 container center-layout"><span class="float-md-left d-block d-md-inline-block">Copyright  &copy; 2018 , All rights reserved. </span></p>
     </footer>
